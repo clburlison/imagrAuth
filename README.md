@@ -9,14 +9,12 @@ When playing with this you'll need to make sure `/usr/bin/ldapsearch` is present
 **Did I mention this isn't finished?** The concept is finished but sticking it into Imagr and working isn't.
 
 
----
-
-## What all these files?
+## What are all these files?
 
 * `imagrAuth.nib` - This is the window that contains the view, buttons, and text fields. Use Xcode for modications.
 * `imagrAuth.py` - This is the python backend that does the actual account lookup to verify that the user has permissions to move forward with the imagr workflow.
     * Make sure and modify the three variables.
-    
+
         ```python
         ADGROUP = "imagrusers"
         DOMAIN = "example.com"
@@ -25,7 +23,7 @@ When playing with this you'll need to make sure `/usr/bin/ldapsearch` is present
 
 * `launchImagrAuth.sh` - A simple wrapper that mounts a DMG containing all the resources for `imagrAuth.py` to work. This is the script that your `imagr_config.plist` will call. See `imagr_config_example.plist` for more info.
 * `nibbler.py` - @pudquick's creation to use nib files within python
-* `Makefile` - run `make dmg` to create a dmg that you'll add to your 
+* `Makefile` - run `make dmg` to create a dmg that you'll add to your
 * `imagr_config_example.plist` - An example imagr workflow to help connect the dots.
 
 ## How do I make this work in NetInstall?
