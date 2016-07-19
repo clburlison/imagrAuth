@@ -12,6 +12,7 @@ http://everythingisgray.com/2014/01/02/querying-ad-group-membership-status-with-
 '''
 
 import subprocess
+import os
 from nibbler import *
 
 ADGROUP = "imagrusers"
@@ -19,17 +20,18 @@ DOMAIN = "example.com"
 SEARCH_BASE = "DC=example,DC=com"
 
 try:
-    n = Nibbler('/Users/Shared/imagrAuth.nib')
-except IOError:
+    script_path = os.path.dirname(os.path.realpath(__file__))
+    n = Nibbler(os.path.join(script_path, 'imagrAuth.nib'))
+except IOError, ImportError:
     print "Unable to load nib!"
     exit(20)
 
 
-def exit():
-    '''Exit imagrAuth and continue the imagr workflow'''
+def exitScript():
+    '''Exit imagrAuth and don't continue the imagr workflow'''
     print "Goodbye!"
     n.quit()
-    exit(0)
+    exit(1)
 
 
 def reboot():
@@ -67,7 +69,7 @@ def runner():
     if getADGroup(username, password):
         # User has the correct username/password and they are authroized
         feedback.setStringValue_(u"✅ Valid user")
-        exit()
+        exit(0)
     else:
         feedback.setStringValue_(u"❌ Invalid user or not authorized")
 
@@ -76,7 +78,7 @@ def main():
     '''Main method.'''
     n.attach(runner, 'continueButton')
     n.attach(reboot, 'restartButton')
-    n.attach(exit, 'exitButton')
+    n.attach(exitScript, 'exitButton')
 
     n.hidden = True
     n.run()
