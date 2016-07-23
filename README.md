@@ -2,6 +2,11 @@
 
 ![example_gif](/resources/imagrAuth.gif)
 
+
+:bangbang: **This hack is no longer needed.** The concepts are still nice to have documented so I'll leave this unfinished repo up. However, soon Imagr will support this type of task natively. Cheers to Greg! https://github.com/grahamgilbert/imagr/pull/155
+
+---
+
 **Another unfinished project.** Using @pudquick's [nibbler](https://gist.github.com/pudquick/f27efd1ddcbf57be0d14031a5e692015) project to display a simple python app from an nib. The idea behind this project is to run it as a script component inside of an [Imagr](https://github.com/grahamgilbert/imagr) workflow. This script will check for authorization via a LDAP lookup and if everything is hunky dory will exit(0) to continue the imaging workflow.
 
 When playing with this you'll need to make sure `/usr/bin/ldapsearch` is present on your system. Most NetInstall environments will not have this by default.
